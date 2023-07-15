@@ -63,53 +63,40 @@
         <div class="card">
             <div class="card-body">
 
-                <h6 class="card-title">Admin Edit Profile</h6>
+                <h6 class="card-title">Admin Change Password </h6>
 
-                <form class="forms-sample" enctype="multipart/form-data" method="POST" action="{{route('admin.profile.store')}}">
+                <form class="forms-sample" method="POST" action="{{route('admin.update.password')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
+                        <label for="old_password" class="col-sm-3 col-form-label">Old Password</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="exampleInputUsername2" name="name" value="{{$profileData->name}}">
+                            <input type="password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" name="old_password" autocomplete="off">
+                            @error('old_password')
+                            <span class="text-danger">{{$message}}</span>
+
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Username</label>
+                        <label for="new_password" class="col-sm-3 col-form-label">New Password</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="exampleInputEmail2" name="username" autocomplete="off" value="{{$profileData->username}}">
+                            <input type="password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" autocomplete="off">
+                            @error('new_password')
+                            <p class="text-danger">{{$message}}</p>
+
+                            @enderror
                         </div>
                     </div>
+
                     <div class="row mb-3">
-                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="exampleInputMobile" name="email" value="{{$profileData->email}}">
-                        </div>
-                    </div>
-                    {{-- <div class="row mb-3">
-                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="exampleInputPassword2" name="password" autocomplete="off" value="{{$profileData->password}}">
-                        </div>
-                    </div> --}}
-                    <div class="row mb-3">
-                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Address</label>
+                      <label for="confirm_password" class="col-sm-3 col-form-label">Confirm New Password</label>
                       <div class="col-sm-9">
-                          <input type="text" class="form-control" id="exampleInputEmail2" name="address" autocomplete="off" value="{{$profileData->address}}">
+                          <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" autocomplete="off"
+                          autocomplete="off">
+
                       </div>
                     </div>
-                  <div class="row mb-3">
-                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Phone-number</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampleInputEmail2" name="phone" autocomplete="off" value="{{$profileData->phone}}">
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="formFileDisabled" class="form-label">Select Profile Photo</label>
-                    <input class="form-control" type="file" id="img" name="photo">
-                    <img class="wd-70 rounded-circle" src="{{isset($profileData->photo) ?
-                      url('uploads/admin_imgs/' . $profileData->photo) : url('uploads/no_image.jpg')}}"
-                      alt="profile" id="showImg">
-                  </div>
+
                     <div class="form-check mb-3">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">
@@ -126,17 +113,7 @@
 </div>
       <!-- middle wrapper start -->
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#img').change(function(e){
-      let reader = new FileReader();
-      reader.onload = function(e){
-        $('#showImg').attr('src',e.target.result);
-      }
-      reader.readAsDataURL(e.target.files['0']);
-    })
-  })
-</script>
+
 
 
 @endsection
