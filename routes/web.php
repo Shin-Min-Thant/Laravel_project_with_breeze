@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\backend\PropertyTypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+// Admin
 Route::middleware(['auth','role:admin'])->group(function(){
 Route::get('/admin/dashboard',[AdminController::class,'AdminDashboard'])->name('admin.dashbord');
 Route::get('/admin/logout',[AdminController::class,'AdminLogout'])->name('admin.logout');
@@ -39,10 +41,25 @@ Route::post('/admin/profile/store',[AdminController::class,'AdminProfileStore'])
 Route::get('/admin/change/password',[AdminController::class,'AdminChangePassword'])->name('admin.change.password');
 Route::post('/admin/update/password',[AdminController::class,'AdminUpdatePassword'])->name('admin.update.password');
 });
+Route::get('/admin/login',[AdminController::class,'AdminLogin'])->name('admin.login');
 
+
+// Agent
 Route::middleware(['auth','role:agent'])->group(function(){
 Route::get('/agent/dashboard',[AgentController::class,'AgentDashboard'])->name('agent.dashboard');
 
 });
 
-Route::get('/admin/login',[AdminController::class,'AdminLogin'])->name('admin.login');
+
+
+// Admin Property
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::controller(PropertyTypeController::class)->group(function(){
+        Route::get('all/type','AllType')->name('all.type');
+        Route::get('add/type','AddType')->name('add.type');
+        Route::post('restore/type','RestoreType')->name('restore.type');
+        Route::get('edit/type/{id}','EditType')->name('edit.type');
+        Route::post('update/type','UpdateType')->name('update.type');
+        Route::get('delete/type/{id}','DeleteType')->name('delete.type');
+    });
+});
