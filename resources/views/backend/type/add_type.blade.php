@@ -40,12 +40,6 @@
 
 
 
-                    <div class="form-check mb-3">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                            Remember me
-                        </label>
-                    </div>
                     <button type="submit" class="btn btn-primary me-2">Save Change</button>
 
                 </form>

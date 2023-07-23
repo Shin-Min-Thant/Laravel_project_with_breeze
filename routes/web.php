@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\backend\ContentController;
+use App\Http\Controllers\backend\PermissionController;
 use App\Http\Controllers\backend\PropertyTypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -32,6 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
 // Admin
 Route::middleware(['auth','role:admin'])->group(function(){
 Route::get('/admin/dashboard',[AdminController::class,'AdminDashboard'])->name('admin.dashbord');
@@ -41,6 +44,7 @@ Route::post('/admin/profile/store',[AdminController::class,'AdminProfileStore'])
 Route::get('/admin/change/password',[AdminController::class,'AdminChangePassword'])->name('admin.change.password');
 Route::post('/admin/update/password',[AdminController::class,'AdminUpdatePassword'])->name('admin.update.password');
 });
+// End Admin
 Route::get('/admin/login',[AdminController::class,'AdminLogin'])->name('admin.login');
 
 
@@ -54,6 +58,8 @@ Route::get('/agent/dashboard',[AgentController::class,'AgentDashboard'])->name('
 
 // Admin Property
 Route::middleware(['auth','role:admin'])->group(function(){
+
+    // Property Controller
     Route::controller(PropertyTypeController::class)->group(function(){
         Route::get('all/type','AllType')->name('all.type');
         Route::get('add/type','AddType')->name('add.type');
@@ -62,4 +68,30 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('update/type','UpdateType')->name('update.type');
         Route::get('delete/type/{id}','DeleteType')->name('delete.type');
     });
+
+    // Content Controller
+    Route::controller(ContentController::class)->group(function(){
+        Route::get('all/content','AllContent')->name('all.content');
+        Route::get('add/content','AddContent')->name('add.content');
+        Route::post('restore/content','ResotreContent')->name('restore.content');
+        Route::get('edit/content/{id}','EditContent')->name('edit.content');
+        Route::post('update/content','UpdateContent')->name('update.content');
+        Route::get('delete/content/{id}','DeleteContent')->name('delete.content');
+    });
+
+    // Permission Controller
+    Route::controller(PermissionController::class)->group(function(){
+        Route::get('all/permission','AllContent')->name('all.permission');
+        Route::get('add/permission','AddPermission')->name('add.permission');
+        Route::post('restore/permission','ResotrePermission')->name('restore.permission');
+        Route::get('edit/permission/{id}','EditPermission')->name('edit.permission');
+        Route::post('update/permission','UpdatePermission')->name('update.permission');
+        Route::get('delete/permission/{id}','DeletePermission')->name('delete.permission');
+    });
+
+
 });
+
+// End Admin
+
+
