@@ -71,34 +71,8 @@
             <span class="link-title">Calendar</span>
           </a>
         </li>
-        <li class="nav-item nav-category">Components</li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-            <i class="link-icon" data-feather="feather"></i>
-            <span class="link-title">UI Kit</span>
-            <i class="link-arrow" data-feather="chevron-down"></i>
-          </a>
-          <div class="collapse" id="uiComponents">
-            <ul class="nav sub-menu">
-              <li class="nav-item">
-                <a href="pages/ui-components/accordion.html" class="nav-link">Accordion</a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/ui-components/alerts.html" class="nav-link">Alerts</a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/ui-components/badges.html" class="nav-link">Badges</a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/ui-components/breadcrumbs.html" class="nav-link">Breadcrumbs</a>
-              </li>
+        <li class="nav-item nav-category">Role and Permission</li>
 
-
-
-
-            </ul>
-          </div>
-        </li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
             <i class="link-icon" data-feather="anchor"></i>
@@ -112,6 +86,15 @@
               </li>
               <li class="nav-item">
                 <a href="{{route('add.permission')}}" class="nav-link">Add Permission</a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('all.roles')}}" class="nav-link">All Roles</a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('add.roles.permission')}}" class="nav-link">Add Role and Permission</a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('all.roles.permission')}}" class="nav-link">All Role and Permission</a>
               </li>
 
             </ul>
@@ -135,24 +118,7 @@
             </ul>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"  data-bs-toggle="collapse" href="#charts" role="button" aria-expanded="false" aria-controls="charts">
-            <i class="link-icon" data-feather="pie-chart"></i>
-            <span class="link-title">Charts</span>
-            <i class="link-arrow" data-feather="chevron-down"></i>
-          </a>
-          <div class="collapse" id="charts">
-            <ul class="nav sub-menu">
-              <li class="nav-item">
-                <a href="pages/charts/apex.html" class="nav-link">Apex</a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">ChartJs</a>
-              </li>
 
-            </ul>
-          </div>
-        </li>
 
 
         <li class="nav-item nav-category">Pages</li>

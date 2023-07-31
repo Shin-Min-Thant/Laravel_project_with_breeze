@@ -25,9 +25,10 @@
                             <div class="col-sm-9">
                                 <select class="form-select" name="group_name" id="group_name" aria-label="Default select example">
                                     <option disabled selected="">Slect Group_name</option>
-                                    <option value="type">Property Type</option>
-                                    <option value="content">Content</option>
-                                    <option value="role">Role & Permission</option>
+                                    <option value="Property Type">Property Type</option>
+                                    <option value="Content">Content</option>
+                                    <option value="Content">Permission and Role</option>
+
                                   </select>
                             </div>
 
@@ -47,27 +48,27 @@
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                title: {
+                name: {
                     required : true,
                 },
 
             },
             messages :{
-                title: {
-                    required : 'Please Enter Title',
+                gname: {
+                    required : 'Please Enter Group-name',
                 },
 
 
             },
             rules: {
-                description: {
+                group_name: {
                     required : true,
                 },
 
             },
             messages :{
-                description: {
-                    required : 'Please Enter Description',
+                group_name: {
+                    required : 'Please Selected',
                 },
 
 

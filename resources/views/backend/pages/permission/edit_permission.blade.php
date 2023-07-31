@@ -26,9 +26,9 @@
                             <div class="col-sm-9">
                                 <select class="form-select" name="group_name" id="group_name" aria-label="Default select example">
                                     <option disabled selected="">Slect Group_name</option>
-                                    <option value="type" {{$permission->group_name == 'type' ? 'selected' : '' }}>Property Type</option>
-                                    <option value="content" {{$permission->group_name == 'content' ? 'selected' : ''}}>Content</option>
-                                    <option value="role" {{$permission->group_name == 'role' ? 'selected' : ''}}>Role & Permission</option>
+                                    <option value="Property Type" {{$permission->group_name == 'Property Type' ? 'selected' : '' }}>Property</option>
+                                    <option value="Content" {{$permission->group_name == 'Content' ? 'selected' : ''}}>Content</option>
+                                    <option value="Role and Permission" {{$permission->group_name == 'Role and Permission' ? 'selected' : ''}}>Role and Permission</option>
                                   </select>
                             </div>
 

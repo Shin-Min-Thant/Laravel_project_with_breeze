@@ -4,9 +4,12 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\backend\ContentController;
 use App\Http\Controllers\backend\PermissionController;
 use App\Http\Controllers\backend\PropertyTypeController;
+use App\Http\Controllers\backend\RoleController;
+use App\Http\Controllers\backend\RolePermissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Tests\Integration\Routing\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,8 +92,27 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('delete/permission/{id}','DeletePermission')->name('delete.permission');
     });
 
+    // Role Controller
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('all/roles','AllRoles')->name('all.roles');
+        Route::get('add/role','AddRole')->name('add.role');
+        Route::post('restore/role','ResotreRole')->name('restore.role');
+        Route::get('edit/role/{id}','EditRole')->name('edit.role');
+        Route::post('update/role','UpdateRole')->name('update.role');
+        Route::get('delete/role/{id}','DeleteRole')->name('delete.role');
+    });
+
+    Route::controller(RolePermissionController::class)->group(function(){
+        Route::get('add/roles/permission','AddRolePermission')->name('add.roles.permission');
+        Route::get('all/roles/permission','AllRolePermission')->name('all.roles.permission');
+        Route::post('store/roles/permission','StoreRolePermission')->name('store.roles.permission');
+        Route::get('edit/role/permission/{id}','EditRolePermission')->name('admin.edit.permission');
+    });
+
 
 });
+
+
 
 // End Admin
 
