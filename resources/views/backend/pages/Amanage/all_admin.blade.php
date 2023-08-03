@@ -5,7 +5,7 @@
 <div class="page-content">
 
     <nav class="page-breadcrumb">
-        <a href="{{route('add.roles.permission')}}" class="btn btn-inverse-success">Add Role and Permission</a>
+        <a href="{{route('add.admin')}}" class="btn btn-inverse-success">Add Admin</a>
     </nav>
 
     <div class="row">
@@ -19,28 +19,38 @@
         <thead>
           <tr>
             <th>Sl</th>
-            <th>Role Name</th>
-            <th>Permission</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Photo</th>
+            <th>Phone</th>
+            <th>Role</th>
             <th>Action</th>
 
           </tr>
         </thead>
         <tbody>
-            @foreach ($roles as $key => $item)
+            @foreach ($users as $key => $item)
 
 
           <tr>
             <td>{{$key+1}}</td>
             <td>{{$item->name}}</td>
-           <td>
-            @foreach ($item->permissions as $iper)
-            <span class="badge bg-secondary">{{$iper->name}}</span>
-            @endforeach
-           </td>
+            <td>{{$item->username}}</td>
+            <td>{{$item->email}}</td>
+            <td><img src="{{(isset($item->photo) ? url('uploads/admin_imgs/' . $item->photo) : url('uploads/no_image.jpg'))}}"></td>
+            <td>{{$item->phone}}</td>
+            <td>
+                @foreach ($item->roles as $role)
+                <span class="badge badge-pill bg-secondary">{{$role->name}}</span>
+                @endforeach
+
+            </td>
+
 
             <td>
-                <a href="{{route('admin.edit.permission',$item->id)}}" class="btn btn-inverse-warning">Edit</a>
-                <a href="{{route('admin.delete.permission',$item->id)}}" id="delete" class="btn btn-inverse-danger">Delete</a>
+                <a href="{{route('admin.edit',$item->id)}}" class="btn btn-inverse-warning">Edit</a>
+                <a href="{{route('admin.delete',$item->id)}}" id="delete" class="btn btn-inverse-danger">Delete</a>
                 <a href="" class="btn btn-inverse-success">Publish</a>
             </td>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\backend\ContentController;
+use App\Http\Controllers\backend\ManageAdminController;
 use App\Http\Controllers\backend\PermissionController;
 use App\Http\Controllers\backend\PropertyTypeController;
 use App\Http\Controllers\backend\RoleController;
@@ -107,6 +108,17 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('all/roles/permission','AllRolePermission')->name('all.roles.permission');
         Route::post('store/roles/permission','StoreRolePermission')->name('store.roles.permission');
         Route::get('edit/role/permission/{id}','EditRolePermission')->name('admin.edit.permission');
+        Route::post('update/role/permission/{id}','UpdateRolePermission')->name('admin.update.permission');
+        Route::get('delete/role/permission/{id}','DeleteRolePermission')->name('admin.delete.permission');
+    });
+
+    Route::controller(ManageAdminController::class)->group(function(){
+        Route::get('all/admin',"allAdmin")->name('all.admin');
+        Route::get('add/admin',"addAmin")->name('add.admin');
+        Route::post('store/admin',"storeAdmin")->name('store.admin');
+        Route::get('edit/admin/{id}',"editAdmin")->name('admin.edit');
+        Route::post('update/admin/{id}',"updateAdmin")->name('update.admin');
+        Route::get('delete/admin/{id}',"deleteAdmin")->name('admin.delete');
     });
 
 

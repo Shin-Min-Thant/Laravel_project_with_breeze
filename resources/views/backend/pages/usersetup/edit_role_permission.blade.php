@@ -18,7 +18,7 @@
 
                 <h6 class="card-title">Edit Role and Permission</h6>
 
-                <form class="forms-sample" id="myForm" method="POST" action="">
+                <form class="forms-sample" id="myForm" method="POST" action="{{route('admin.update.permission',$role->id)}}">
                     @csrf
                     <div class="row mb-3 form-group">
 
@@ -49,7 +49,7 @@
                         $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
                         @endphp
                             <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                            <input class="form-check-input" name="permission" type="checkbox" value="" id="flexCheckDefault"
                             {{App\Models\User::roleHasPermission($role,$permissions) ? 'checked' : ''}}>
                             <label class="form-check-label" for="flexCheckDefault">
                               {{$group->group_name}}

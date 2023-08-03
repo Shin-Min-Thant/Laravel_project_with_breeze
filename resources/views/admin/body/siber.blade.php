@@ -76,30 +76,50 @@
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
             <i class="link-icon" data-feather="anchor"></i>
-            <span class="link-title">Permission</span>
+            <span class="link-title">Admin User Manage</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
           </a>
           <div class="collapse" id="advancedUI">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="{{route('all.permission')}}" class="nav-link">All Permission</a>
+                <a href="{{route('all.admin')}}" class="nav-link">All Admin</a>
               </li>
               <li class="nav-item">
-                <a href="{{route('add.permission')}}" class="nav-link">Add Permission</a>
+                <a href="{{route('add.admin')}}" class="nav-link">Add Admin</a>
               </li>
-              <li class="nav-item">
-                <a href="{{route('all.roles')}}" class="nav-link">All Roles</a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('add.roles.permission')}}" class="nav-link">Add Role and Permission</a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('all.roles.permission')}}" class="nav-link">All Role and Permission</a>
-              </li>
+
 
             </ul>
           </div>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
+              <i class="link-icon" data-feather="anchor"></i>
+              <span class="link-title">Permission</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="advancedUI">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{route('all.permission')}}" class="nav-link">All Permission</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('add.permission')}}" class="nav-link">Add Permission</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('all.roles')}}" class="nav-link">All Roles</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('add.roles.permission')}}" class="nav-link">Add Role and Permission</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('all.roles.permission')}}" class="nav-link">All Role and Permission</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#forms" role="button" aria-expanded="false" aria-controls="forms">
             <i class="link-icon" data-feather="inbox"></i>

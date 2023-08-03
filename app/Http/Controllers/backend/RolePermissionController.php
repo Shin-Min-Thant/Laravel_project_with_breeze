@@ -17,7 +17,7 @@ class RolePermissionController extends Controller
         return view('backend.pages.usersetup.add_role_permission',compact('roles','permissions','permission_group'));
     }
 
-   
+
 
     public function StoreRolePermission(Request $request){
         $data = array();
@@ -27,7 +27,7 @@ class RolePermissionController extends Controller
             $data['permission_id'] = $item;
             DB::table('role_has_permissions')->insert($data);
         }
-       
+
         $notification = array(
             'message' => 'Role permission added Successfully',
             'alert-type' => 'success'
@@ -46,6 +46,34 @@ class RolePermissionController extends Controller
         $permissions = Permission::all();
         $permission_group = User::getPermissionGroup();
         return view('backend.pages.usersetup.edit_role_permission',compact('role','permissions','permission_group'));
+    }
+
+    public function UpdateRolePermission(Request $request,$id){
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+        if(!empty($permissions)){
+            $role->syncPermissions($permissions);
+        }
+        $notification = array(
+            'message' => 'Role permission updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.roles.permission')->with($notification);
+
+    }
+
+    public function DeleteRolePermission($id){
+        $role = Role::findOrFail($id);
+        if(!is_null($role)){
+            $role->delete();
+        }
+        $notification = array(
+            'message' => 'Role permission deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.roles.permission')->with($notification);
     }
 
 }
