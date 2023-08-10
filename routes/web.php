@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Admin
-Route::middleware(['auth','role:admin'])->group(function(){
+Route::middleware(['auth','roles:admin'])->group(function(){
 Route::get('/admin/dashboard',[AdminController::class,'AdminDashboard'])->name('admin.dashbord');
 Route::get('/admin/logout',[AdminController::class,'AdminLogout'])->name('admin.logout');
 Route::get('/admin/profile',[AdminController::class,'AdminProfile'])->name('admin.profile');
@@ -53,7 +53,7 @@ Route::get('/admin/login',[AdminController::class,'AdminLogin'])->name('admin.lo
 
 
 // Agent
-Route::middleware(['auth','role:agent'])->group(function(){
+Route::middleware(['auth','roles:agent'])->group(function(){
 Route::get('/agent/dashboard',[AgentController::class,'AgentDashboard'])->name('agent.dashboard');
 
 });
@@ -61,7 +61,7 @@ Route::get('/agent/dashboard',[AgentController::class,'AgentDashboard'])->name('
 
 
 // Admin Property
-Route::middleware(['auth','role:admin'])->group(function(){
+Route::middleware(['auth','roles:admin'])->group(function(){
 
     // Property Controller
     Route::controller(PropertyTypeController::class)->group(function(){
